@@ -204,7 +204,6 @@ class Network:
     def train(self,inputs,outputs):
         #Run the inputs through each layer, compute the errors
         computed_output = self.predict(inputs)
-        #print("FF: ", computed_output)
         loss = self.loss.compute_loss(outputs,computed_output)
         err_grad = self.loss.loss_grad(outputs,computed_output)
         #Backpropagate the error gradients through the network and compute the del weights and del_biases
