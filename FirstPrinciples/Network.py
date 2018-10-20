@@ -7,9 +7,9 @@ Created on Fri Oct 19 11:30:51 2018
 
 #Write a framework to initialize a neural network
 #Run forward propagation
-#Run backpropagation
-#Update weights
-#Verify functionality on MNIST dataset
+#Run backpropagation and Update weights
+
+
 import numpy as np
 
 #Sigmoid Activation function
@@ -27,6 +27,8 @@ class Sigmoid:
         #Return a 2D array of shape (1,x) by doing element wise derivative of inputs
         return self.activate(inputs)*(1. - self.activate(inputs))    
 
+    
+ 
 #Linear activation function
 class Linear:
     def __init__(self):
@@ -42,6 +44,8 @@ class Linear:
         #Return a 2D array of shape (1,x) by doing element wise derivative of inputs
         return np.ones_like(inputs)   
 
+    
+    
 #Relu activation function
 class Relu:
     def __init__(self):
@@ -59,6 +63,8 @@ class Relu:
         d[inputs<=0.] = 0.
         return d   
 
+    
+    
 #Softmax activation function
 class Softmax:
     def __init__(self):
@@ -72,6 +78,8 @@ class Softmax:
         #The softmax derivative has been tied up with the Categorial cross entropy loss derivate; See CCE_Loss_for_softmax below
         return np.ones_like(inputs)  
 
+    
+    
 #Binary Cross Entropy loss for binary classification
 class BCE_loss:
     def __init__(self):
@@ -83,6 +91,8 @@ class BCE_loss:
     def loss_grad(self,true,pred):
         return -1.*(np.divide(true, pred+1e-11) - np.divide(1 - true, 1 - pred + 1e-11))
 
+    
+    
 #Categorical cross entropy loss for multi class classification to be used with a softmax output layer
 class CCE_loss_for_softmax:
     def __init__(self):
@@ -95,6 +105,8 @@ class CCE_loss_for_softmax:
         #Reference: http://cs231n.github.io/neural-networks-case-study/
         return pred-true
 
+    
+    
 #Layer class that provides the single layer feedforward and backprop functionalities
 class Layer:
     def __init__(self,num_input_nodes,num_output_nodes,activation_func):
@@ -153,6 +165,8 @@ class Layer:
         self.weight_update_counter = 0
     
 
+    
+    
 #Network class to build a list of layers and run the train/predict operations
 class Network:
     def __init__(self,net_list,lr):
