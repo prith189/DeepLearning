@@ -12,8 +12,11 @@ Created on Fri Oct 19 11:30:51 2018
 
 import numpy as np
 
-#Sigmoid Activation function
 class Sigmoid:
+    '''
+    Class implementing the Sigmoid activation function
+    '''
+    
     def __init__(self):
         pass
     
@@ -34,9 +37,10 @@ class Sigmoid:
         return self.activate(inputs)*(1. - self.activate(inputs))    
 
     
- 
-#Linear activation function
 class Linear:
+    '''
+    Class implementing the Linear activation function
+    '''
     def __init__(self):
         pass
     
@@ -57,9 +61,10 @@ class Linear:
         return np.ones_like(inputs)   
 
     
-    
-#Relu activation function
 class Relu:
+    '''
+    Class implementing the Relu activation function
+    '''
     def __init__(self):
         pass
     
@@ -81,10 +86,10 @@ class Relu:
         d[inputs<=0.] = 0.
         return d   
 
-    
-    
-#Softmax activation function
 class Softmax:
+    '''
+    Class implementing the Softmax activation function
+    '''
     def __init__(self):
         pass
     
@@ -108,16 +113,29 @@ class Softmax:
         return np.ones_like(inputs)  
 
     
-    
-#Binary Cross Entropy loss for binary classification
 class BCE_loss:
+    '''
+    Class implementing the Binary Cross entropy loss
+    '''
     def __init__(self):
         pass
     
     def compute_loss(self,true,pred):
+        '''
+        Compute BCE loss between truth and prediction
+        param: true - 2D vector of shape (1,1)
+        param: pred - 2D vector of shape (1,1)
+        return: scalar loss value
+        '''
         return (-1)*(true*np.log(pred+1e-11) + (1-true)*np.log(1-pred+1e-11))
     
     def loss_grad(self,true,pred):
+        '''
+        Compute derivative of BCE loss between truth and prediction of output layer
+        param: true - 2D vector of shape (1,1)
+        param: pred - 2D vector of shape (1,1)
+        return: scalar loss value
+        '''
         return -1.*(np.divide(true, pred+1e-11) - np.divide(1 - true, 1 - pred + 1e-11))
 
     
