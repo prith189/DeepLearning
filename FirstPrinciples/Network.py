@@ -2,7 +2,7 @@
 """
 Created on Fri Oct 19 11:30:51 2018
 
-@author: prithvin
+@author: prithvi
 """
 
 #Write a framework to initialize a neural network
@@ -18,13 +18,19 @@ class Sigmoid:
         pass
     
     def activate(self,inputs):
-        #Expect to get a 2D array of shape (1,x)
-        #Return a 2D array of shape (1,x) by doing element wise sigmoid operation
+        '''
+        Sigmoid activation function on a vector of inputs
+        param: inputs - 2D vector of shape (1,num_inputs)
+        return: 2D vector of shape (1,num_inputs)
+        '''
         return 1. /(1. + np.exp(-1.*inputs))
     
     def derivative(self,inputs):
-        #Expect to get a 2D array of shape (1,x)
-        #Return a 2D array of shape (1,x) by doing element wise derivative of inputs
+        '''
+        Derivate of a sigmoid activation function on a vector of inputs
+        param: inputs - 2D vector of shape (1,num_inputs)
+        return: 2D vector of shape (1,num_inputs)
+        '''
         return self.activate(inputs)*(1. - self.activate(inputs))    
 
     
@@ -35,13 +41,19 @@ class Linear:
         pass
     
     def activate(self,inputs):
-        #Expect to get a 2D array of shape (1,x)
-        #Return a 2D array of shape (1,x) by doing element wise linear operation
+        '''
+        Linear activation function on a vector of inputs
+        param: inputs - 2D vector of shape (1,num_inputs)
+        return: 2D vector of shape (1,num_inputs)
+        '''
         return inputs
     
     def derivative(self,inputs):
-        #Expect to get a 2D array of shape (1,x)
-        #Return a 2D array of shape (1,x) by doing element wise derivative of inputs
+        '''
+        Derivate of a linear activation function on a vector of inputs
+        param: inputs - 2D vector of shape (1,num_inputs)
+        return: 2D vector of shape (1,num_inputs)
+        '''
         return np.ones_like(inputs)   
 
     
@@ -52,13 +64,19 @@ class Relu:
         pass
     
     def activate(self,inputs):
-        #Expect to get a 2D array of shape (1,x)
-        #Return a 2D array of shape (1,x) by doing element wise relu operation
+        '''
+        Relu activation function on a vector of inputs
+        param: inputs - 2D vector of shape (1,num_inputs)
+        return: 2D vector of shape (1,num_inputs)
+        '''
         return np.maximum(0,inputs)
     
     def derivative(self,inputs):
-        #Expect to get a 2D array of shape (1,x)
-        #Return a 2D array of shape (1,x) by doing element wise derivative of inputs
+        '''
+        Derivate of a Relu activation function on a vector of inputs
+        param: inputs - 2D vector of shape (1,num_inputs)
+        return: 2D vector of shape (1,num_inputs)
+        '''
         d = np.ones_like(inputs)
         d[inputs<=0.] = 0.
         return d   
@@ -71,11 +89,22 @@ class Softmax:
         pass
     
     def activate(self,inputs):
-        out = np.exp(inputs)/np.sum(np.exp(inputs))
-        return out
+        '''
+        Softmax activation function on a vector of inputs
+        param: inputs - 2D vector of shape (1,num_inputs)
+        return: 2D vector of shape (1,num_inputs)
+        '''
+        return np.exp(inputs)/np.sum(np.exp(inputs))
     
     def derivative(self,inputs):
-        #The softmax derivative has been tied up with the Categorial cross entropy loss derivate; See CCE_Loss_for_softmax below
+        '''
+        Derivative of Softmax activation function on a vector of inputs
+        ***NOTE***
+        This derivative function is tied up with the CCE_Loss_with_softmax class, so here we are simply returning a ones vector
+        **********
+        param: inputs - 2D vector of shape (1,num_inputs)
+        return: 2D vector of shape (1,num_inputs)
+        '''
         return np.ones_like(inputs)  
 
     
