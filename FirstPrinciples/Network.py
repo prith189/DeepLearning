@@ -5,10 +5,11 @@ Created on Fri Oct 19 11:30:51 2018
 @author: prithvi
 """
 
-#Write a framework to initialize a neural network
-#Run forward propagation
-#Run backpropagation and Update weights
-
+'''
+Write a framework to initialize a neural network
+Run forward propagation
+Run backpropagation and Update weights
+'''
 
 import numpy as np
 
