@@ -141,8 +141,18 @@ class text_gen:
         return data, target
     
     def predict_text(self, nnet, seed_char, num_char):
+        '''
+        Function that uses a trained network to generate new text
+        param: nnet - Trained neural network that has a .predict() method
+        param: seed_char - The seed text to use
+        param: num_char - Number of characters of text to generate
+        '''
+        
+        #Truncate the seed text to self.ts
         if(len(seed_char)>self.ts):
             seed_char = seed_char[-self.ts:]
+        
+        #Run the network on the seed text to bring the hidden states to intended place
         count = 0
         inp_arr = np.zeros([1,self.ts,self.num_classes])
         for i in range(len(seed_char)):
@@ -151,6 +161,7 @@ class text_gen:
             pred_char_int = np.random.choice(self.num_classes,1,p=nnet.predict(inp_arr)[0][count])[0]
             count += 1            
         
+        #Feed the output as the next input character and run the network until num_char are generated
         pred_text = seed_char
         for i in range(num_char):
             nnet.model.reset_states()
@@ -161,7 +172,6 @@ class text_gen:
             inp_arr[0,count,pred_char_int] = 1
             pred_prob = sample(nnet.predict(inp_arr)[0][count],0.1)
             pred_char_int = np.random.choice(self.num_classes,1,p=pred_prob)[0]
-            #pred_char_int = pred_prob,0.005)
             pred_text = pred_text + self.int_to_char[pred_char_int]
             count += 1
             
@@ -192,16 +202,19 @@ class text_gen:
         return seed_text
     
 if __name__ == '__main__':
-    #Demonstrate the usage of the defined classes and show output
+    '''
+    Demonstrate the usage of the defined classes. Train the network and show generated text
+    '''
     num_timesteps = 256
+    batch_size = 64
     text_file_dir = 'Text_Files_C'
-    t_gen = text_gen(text_file_dir,num_timesteps,64)
+    t_gen = text_gen(text_file_dir,num_timesteps,batch_size)
     net = LSTMNetwork(num_timesteps,t_gen.num_classes,t_gen.num_classes)
     net.build_net()
     batch_gen = t_gen.gen()
     for i in range(10):
         net.train(batch_gen,10,1000)
-        print('Generated Text')
+        print('Generated Text after Epoch: ',i)
         pred_text = tg.predict_text(net,t_gen.get_seed_text(),800)
         pred_text = ''.join(pred_text)
         print(pred_text)
