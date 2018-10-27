@@ -1,6 +1,6 @@
 Network was trained by using random C source files. 
 
-Here are a few generated text samples:
+Here are a few generated text samples. The syntax is correct for the most part (Eg. ending a line with a ; , closing a loop etc.)
 
 **Sample 1:**
 
