@@ -1,4 +1,4 @@
-# DeepLearningShowcase
+# DeepLearning
 Source code for some deep learning related projects that I've implemented
 1. [Neural Network from first principles (using only Numpy)](https://github.com/prith189/DeepLearningShowcase/tree/master/FirstPrinciples)
       - Implemented a Fully connected dense layer architecture with functions to backpropagate and update gradients using only Numpy
