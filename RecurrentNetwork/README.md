@@ -51,7 +51,7 @@ static void __init page_stare(struct priv_cpu *page, struct page *page)
 
 **Sample 2:**
 
-```
+```C
 , &info);
         }
 
