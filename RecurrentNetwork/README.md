@@ -4,7 +4,7 @@ Here are a few generated text samples. The syntax is correct for the most part (
 
 **Sample 1:**
 
-```
+```C
 ock_child;
 
         psk = ask->parent;
