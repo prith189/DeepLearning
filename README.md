@@ -9,4 +9,4 @@ Source code for some deep learning related projects that I've implemented
 3. Convolutional Neural Networks
       - [Carvana Image Segmentation]() Kaggle contest to segment the outline of a car in an image. Used the UNet architecture and built in Keras
 4. Generative Adverserial Networks
-      - [Speech Sample Generation]() Using Small Speech samples, built a GAN that can generate speech. Built using Tensorflow on a dataset provided by Google
+      - [Speech Sample Generation](https://github.com/prith189/DeepLearning/tree/master/Speech_GAN) Using Small Speech samples, built a GAN that can generate speech. Built using Tensorflow on a dataset provided by Google
