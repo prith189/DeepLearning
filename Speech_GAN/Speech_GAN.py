@@ -12,13 +12,13 @@ from Spectrogram_gen import Datagen
 
 
 class DCGAN:
-    def __init__(self):
+    def __init__(self, latent_dim, im_width, im_height, im_chan, batch_size):
         
-        self.latent_dim = 100
-        self.im_width = 48
-        self.im_height = 64
-        self.im_chan = 1
-        self.batch_size = 32
+        self.latent_dim = latent_dim
+        self.im_width = im_width
+        self.im_height = im_height
+        self.im_chan = im_chan
+        self.batch_size = batch_size
         
         self.build_discriminator()
         self.discriminator.compile(loss='binary_crossentropy', optimizer=Adam(0.0002, 0.5), metrics=['accuracy'])
@@ -31,10 +31,7 @@ class DCGAN:
         pred = self.discriminator(gen_img)
         self.stacked = Model(noise,pred)
         self.stacked.compile(loss='binary_crossentropy', optimizer=Adam(0.0002, 0.5), metrics=['accuracy'])
-        
-        self.data = Datagen('happy')
-        self.dgen = self.data.batch_gen(self.batch_size)
-        
+               
         pass
     
     def build_generator(self):
@@ -71,9 +68,9 @@ class DCGAN:
         y = Dense(1,activation='sigmoid')(x1)
         self.discriminator = Model(inp,y)
     
-    def train_discriminator(self):
+    def train_discriminator(self,d_gen):
         gen_imgs = self.gen_images(int(self.batch_size))
-        true_imgs = next(self.dgen)
+        true_imgs = next(d_gen)
         np_ones = np.ones([self.batch_size,])
         np_zeros = np.zeros([self.batch_size,])
         loss = self.discriminator.train_on_batch(gen_imgs,np_zeros)
@@ -91,16 +88,24 @@ class DCGAN:
         loss = self.stacked.train_on_batch(feature_arr,target_arr)
         return loss
     
-    def train_GAN(self,epochs):
+    def train_GAN(self,epochs,d_gen):
         for ep in range(epochs):
-            d_loss = self.train_discriminator()
+            d_loss = self.train_discriminator(d_gen)
             g_loss = self.train_stacked()
             print(ep, d_loss, g_loss)
     
         
 if __name__ == '__main__':
-    gan = DCGAN()
-    gan.train_GAN(4000)
+    batch_size = 32
+    im_width = 48
+    im_height = 64
+    im_chan = 1
+    latent_dim = 100
+    num_epochs = 4000
+    data_gen = Datagen('happy')
+    dgen = data_gen.batch_gen(batch_size)
+    gan = DCGAN(latent_dim, im_width, im_height, im_chan, batch_size)
+    gan.train_GAN(num_epochs,dgen)
     cf = gan.gen_images(64)
     for j in range(64):
-        gan.data.spectrogram_to_audio(cf[j])
+        data_gen.spectrogram_to_audio(cf[j])
