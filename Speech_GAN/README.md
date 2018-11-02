@@ -1,6 +1,6 @@
 ### A Convolutional GAN architecture built in Keras to generate short speech samples ###
 
-While working on this Kaggle competition, since the number of training samples was small, I tried to build synthetic speech samples using a GAN architecture.
+While working on [this](https://www.kaggle.com/c/tensorflow-speech-recognition-challenge) Kaggle competition, as the number of training samples was small, I tried to build synthetic speech samples using a GAN architecture.
 
 The resulting speech samples are fairly decent.
 
