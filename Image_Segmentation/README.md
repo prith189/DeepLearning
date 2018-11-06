@@ -2,7 +2,7 @@
 
 Implemented as an entry to [this](https://www.kaggle.com/c/carvana-image-masking-challenge) Kaggle competition
 
-Used ideas from the UNet architecture as described here:
+Used ideas from the UNet architecture as described here: https://arxiv.org/pdf/1505.04597.pdf
 
 Source code will be uploaded soon.
 
