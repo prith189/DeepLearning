@@ -52,10 +52,10 @@ class train_gen:
         self.ohe = OneHotEncoder(n_values=self.num_vocab,sparse=False)
         
     def read_files(self):
-        f = open('letters_source.txt')
+        f = open('features.txt') #Readme.md
         self.source_list = f.read().splitlines()
         f.close()
-        f = open('letters_target.txt')
+        f = open('target.txt') #Readme.md
         self.target_list = f.read().splitlines()
         f.close()
         self.len_max_seq = max([len(i) for i in self.source_list])
