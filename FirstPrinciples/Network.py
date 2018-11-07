@@ -170,9 +170,18 @@ class CCE_loss_for_softmax:
 
     
     
-#Layer class that provides the single layer feedforward and backprop functionalities
 class Layer:
+    '''
+    Layer class that provides feedforward and backprop functionalities for a single Dense layer
+    '''
     def __init__(self,num_input_nodes,num_output_nodes,activation_func):
+        '''
+        Constructor method that initializes weights/biases/activation function
+        param: num_input_nodes - integer value 
+        param: num_output_nodes - integer value 
+        param: activation_func - string ('relu'/'sigmoid'/'softmax')
+        Initializes vectors for weights/biases & weight_updates/bias_updates
+        '''
         self.num_in = num_input_nodes
         self.num_out = num_output_nodes
         self.W = np.random.randn(num_input_nodes,num_output_nodes)*0.1
