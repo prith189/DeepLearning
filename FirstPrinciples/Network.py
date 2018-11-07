@@ -211,14 +211,21 @@ class Layer:
         activated = self.activation.activate(self.pre_activation)
         return activated
     
-    #Method to run the backpropagation operation
+
     def back_prop(self,errors):
-        # We expect to get a 2D array with shape (1,num_outputs) as input
-        # We compute a 2D array with shape (num_in,num_out) which represents the delta weights
-        #We also compute the upstream error derivative that is passed on to the next layer to aid in its error gradient calculation
+        '''
+        Class method that runs a backprop operation on a vector of error gradients received from upstream layers
+        param: errors - 2D vector of shape (1,num_output_nodes)
+        return: upstream_error - 2D vector of shape (1,num_input_nodes)
+        Internally, we compute a 2D array with shape (num_input_nodes,num_output_nodes) which represents the delta weights
+        We also compute the upstream error derivative that is passed on to the next layer to aid in its error gradient calculation
+        
+        Logic:
+        The delta weights that are propagated from an output node to each of the input nodes is of the form
+        Error at the node * derivative of the activation function w.r.t to pre-activated input * input
+        '''
+        
         assert (errors.shape[0] == 1 and errors.shape[1] == self.num_out)
-        #The delta weights that are propagated from an output node to each of the input nodes is of the form
-        #Error at the node * derivative of the activation function w.r.t to pre-activated input * input
         error_component = errors*self.activation.derivative(self.pre_activation)
         assert (error_component.shape[0] == 1 and error_component.shape[1] == self.num_out)
         input_component = self.inputs.T
@@ -232,8 +239,13 @@ class Layer:
         
         return upstream_error
     
-    #Update weights whenever the Network class wants to
+    
     def update_weights(self,lr):
+        '''
+        Class method to update weights based on a schedule decided by the Network class. 
+        Backprop keeps updating the delta_weights until this method is called. Only here are the weight vectors updated
+        param: lr - Learning rate to be used
+        '''
         self.W += (-1)*lr*(self.delta_weights/self.weight_update_counter)
         self.B += (-1)*lr*(self.delta_biases/self.weight_update_counter)
         self.delta_weights = np.zeros_like(self.W)
