@@ -197,10 +197,14 @@ class Layer:
         self.delta_biases = np.zeros_like(self.B)
         self.weight_update_counter = 0
         
-    #Method to run the feed forward operation
+    
     def forward_prop(self,inputs):
-        #We expect to geta 2D array with shape (1, num_inputs)
-        #Will return a 2D array with shape (1, num_outputs)
+        '''
+        Class method that runs a feedforward operation on a set of inputs. Also stores the inputs/pre-activation outputs
+        to be used later for backprop computation
+        param: inputs - 2D vector of shape (1,num_input_nodes)
+        return: activated - 2D vector of shape (1,num_output_nodes)
+        '''
         assert (inputs.shape[0] == 1 and inputs.shape[1] == self.num_in)
         self.inputs = inputs
         self.pre_activation= np.matmul(inputs,self.W) + self.B
