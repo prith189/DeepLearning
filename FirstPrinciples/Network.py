@@ -135,22 +135,37 @@ class BCE_loss:
         Compute derivative of BCE loss between truth and prediction of output layer
         param: true - 2D vector of shape (1,1)
         param: pred - 2D vector of shape (1,1)
-        return: scalar loss value
+        return: gradient of loss
         '''
         return -1.*(np.divide(true, pred+1e-11) - np.divide(1 - true, 1 - pred + 1e-11))
 
     
     
-#Categorical cross entropy loss for multi class classification to be used with a softmax output layer
+
 class CCE_loss_for_softmax:
+    '''
+    Class implementing the Categorical Cross Entropy loss
+    '''
     def __init__(self):
         pass
     
     def compute_loss(self,true,pred):
-        return (-1)*(true*np.log(pred+1e-11))
+        '''
+        Compute CCE loss between truth and prediction
+        param: true - 2D vector of shape (1,num_classes)
+        param: pred - 2D vector of shape (1,num_classes)
+        return: scalar loss value
+        '''
+        return np.sum((-1)*(true*np.log(pred+1e-11)))
     
     def loss_grad(self,true,pred):
-        #Reference: http://cs231n.github.io/neural-networks-case-study/
+        '''
+        Compute CCE loss between truth and prediction as described here: http://cs231n.github.io/neural-networks-case-study/
+        param: true - 2D vector of shape (1,num_classes)
+        param: pred - 2D vector of shape (1,num_classes)
+        return: 2D vector of gradients of shape (1,num_classes)
+        '''
+        
         return pred-true
 
     
