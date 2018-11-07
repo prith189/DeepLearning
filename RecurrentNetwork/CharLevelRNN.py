@@ -86,6 +86,12 @@ class LSTMNetwork:
 
 class text_gen:
     def __init__(self,text_file_dir,num_timesteps,num_samples):
+        '''
+        Constructor method for the text generator
+        param: text_file_dir - Directory where input text files are saved
+        param: num_timesteps - How many characters do we want the network to keep a history of
+        param: num_samples - batch_size
+        '''
         self.file_dir = text_file_dir
         self.files_in_dir = os.listdir(self.file_dir)
         self.ts = num_timesteps
