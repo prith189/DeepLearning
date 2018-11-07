@@ -255,15 +255,22 @@ class Layer:
 
     
     
-#Network class to build a list of layers and run the train/predict operations
+
 class Network:
+    '''
+    Network class to build a list of layers and run the train/predict operations
+    '''
     def __init__(self,net_list,lr):
-        #Net_list is a list of integers
-        #First element is the number of inputs
-        #Last element is the number of outputs
-        #The elements in between are the number of nodes in the hidden layers
-        #For eg, if we plan to run MNIST using 3 hidden layers, then net_list will look like
-        #[784, 512, 256, 128, 10]
+        '''
+        Constructor method builds the network architecture by calling self.layer_init()
+        param: net_list is a list of integers
+               First element is the number of inputs
+               Last element is the number of outputs
+               The elements in between are the number of nodes in the hidden layers
+               For eg, if we plan to run MNIST using 3 hidden layers, then net_list will look like
+               [784, 512, 256, 128, 10]
+        param: lr - Learning rate
+        '''
         self.nn_arch = net_list 
         self.num_layers = len(self.nn_arch) - 1
         self.layers = []
@@ -274,8 +281,12 @@ class Network:
         
     
     def layer_init(self):
+        '''
+        Class method that initializes the input/output/hidden layers based on network architecture specified
+        For last layer use sigmoid or softmax, for other layers use Relu
+        '''
         for i in range(self.num_layers):
-            #If last layer, use sigmoid or softmax, else use Relu
+            
             if(i==self.num_layers-1):
                 layer = Layer(self.nn_arch[i],self.nn_arch[i+1],'softmax')
             else:
@@ -284,21 +295,39 @@ class Network:
             self.layers.append(layer)
                 
     def predict(self,inputs):
-        #Run the inputs through each layer, compute the class probabilities
+        '''
+        Class method that does Feed forward through the whole network
+        param: inputs - Input vector
+        return inputs - Predicted Output vector
+        '''
         for i in range(len(self.layers)):
             inputs = self.layers[i].forward_prop(inputs)
         return inputs
     
     def train(self,inputs,outputs):
-        #Run the inputs through each layer, compute the errors
+        '''
+        Class method to do the train operation
+        param: inputs - Input vector
+        param: outputs - Truth vector
+        return loss - Computed loss
+        
+        1. Run the inputs through each layer, compute the errors
+        2. Backpropagate the error gradients through the network and compute the del weights and del_biases
+        3. Only update weights when certain number of samples have been processed
+        
+        '''
+        
+        #1.
         computed_output = self.predict(inputs)
         loss = self.loss.compute_loss(outputs,computed_output)
         err_grad = self.loss.loss_grad(outputs,computed_output)
-        #Backpropagate the error gradients through the network and compute the del weights and del_biases
+        
+        #2.
         for i in range(len(self.layers)):
             err_grad = self.layers[-(i+1)].back_prop(err_grad)
         self.num_sample_proc += 1
-        #Only update weights when certain number of samples have been processed
+        
+        #3.
         if(self.num_sample_proc>3):
             for i in range(len(self.layers)):
                 self.layers[i].update_weights(self.lr)
