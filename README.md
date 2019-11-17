@@ -8,5 +8,6 @@ Source code for some deep learning related projects that I've implemented
       - [CharacterLevelRNN](https://github.com/prith189/DeepLearningShowcase/tree/master/RecurrentNetwork) Trained a simple character level RNN on a random C code base
 3. Convolutional Neural Networks
       - [Carvana Image Segmentation](https://github.com/prith189/DeepLearning/tree/master/Image_Segmentation) Kaggle contest to segment the outline of a car in an image. Used the UNet architecture and built in Keras
+      - [Yelp Restaurant Photo Classification](https://github.com/prith189/Yelp_Restaurant_Photo_Classification) 16th placed solution to classify crowd sourced images of restaurants
 4. Generative Adverserial Networks
       - [Speech Sample Generation](https://github.com/prith189/DeepLearning/tree/master/Speech_GAN) Using Small Speech samples, built a GAN that can generate speech. Built using Keras on a dataset provided by Google
