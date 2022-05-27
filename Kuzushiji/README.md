@@ -8,8 +8,10 @@ My final submission which secured 22nd place is a slightly enhanced version of t
 
 
 
+
 Sample bounding box output:
-![image](https://user-images.githubusercontent.com/9631296/170788076-d6282919-7906-4b3b-afa5-0411dacdb516.png)
+
+<img src="https://user-images.githubusercontent.com/9631296/170788076-d6282919-7906-4b3b-afa5-0411dacdb516.png" width="400">
 
 
 ## Approach
