@@ -3,6 +3,9 @@
 
 Implemented as an entry to [this](https://www.kaggle.com/c/career-con-2019/overview) Kaggle competition. My entry ended up in the 3rd place on the leaderboard
 
+![image](https://user-images.githubusercontent.com/9631296/170639520-9ba76652-8e99-4d36-9bb5-6ed1aae34bfc.png)
+
+
 Problem: Use sensor measurements (accel, gyro) and predict the surface on which a robot is moving on.
 
 Features:
@@ -13,4 +16,4 @@ CV:
 As discussed by multiple people on the forums, GroupKFold makes sense here. k=3 gave me ~0.65-0.7 CV scores which translated to ~0.8 on the Public leaderboard.
 
 Model:
-1D Convolution based NN. I saw slightly better results with the SeparableConv1D implementation in Keras, but I'm sure the simpler Conv1D layer if tuned properly should perform equally well.
+1D Convolution based NN. Used a SeparableConv1D layer implementation in Keras.
