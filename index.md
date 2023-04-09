@@ -8,6 +8,8 @@ Hello! My name is Prithvi Nuthanakalva, and I'm currently a Machine Learning Eng
 
 Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/pnuthanakalva/)!
 
+
+
 # Projects
 
 Sharing some ML projects I've implemented
