@@ -1,5 +1,5 @@
 # DeepLearning
-Source code for some deep learning related projects that I've implemented
+Sharing some personal ML projects I've worked on
 1. [Neural Network from first principles (using only Numpy)](https://github.com/prith189/DeepLearningShowcase/tree/master/FirstPrinciples)
       - Implemented a Fully connected dense layer architecture using just simple Numpy with functions to backpropagate and update gradients 
       - Trained on MNIST dataset using Fully connected layers with reasonable accuracy (~98%)
