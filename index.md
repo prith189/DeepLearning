@@ -6,13 +6,13 @@ layout: default
 
 Hello! My name is Prithvi Nuthanakalva, and I'm currently a Machine Learning Engineer at a startup. In my previous career, I helped build and ship GPS Positioning and Navigation software, and have extensive experience in a technical customer facing role. 
 
-Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/pnuthanakalva/)!
+Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/pnuthanakalva/)
 
 
 
 # Projects
 
-Sharing some ML projects I've implemented
+Sharing some personal ML projects I've worked on
 
 1. [Neural Network from first principles (using only Numpy)](https://github.com/prith189/DeepLearningShowcase/tree/master/FirstPrinciples)
       - Implemented a Fully connected dense layer architecture using just simple Numpy with functions to backpropagate and update gradients 
