@@ -8,6 +8,9 @@ Hello! My name is Prithvi Nuthanakalva, and I'm currently a Machine Learning Eng
 
 Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/pnuthanakalva/)
 
+# Website
+
+I recently built an end to end ML application which uses a ML model to provide fantasy recommendations for cricket games based on the players involved, also provides odds of a team winning. For every game, predictions are available 30 minutes prior to game start time (100s of simualtions are run in the background once the teams are announced). The website is live at [betmancric.com](https://betmancric.com)
 
 
 # Projects
