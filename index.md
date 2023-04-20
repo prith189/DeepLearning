@@ -17,9 +17,9 @@ I recently built an end to end ML application which uses a ML model to provide f
 
 Sharing some personal ML projects I've worked on <br /> <br />
 1. Language Models <br />
-      - [Simple Seq2Seq using Transformers(2023)](https://github.com/prith189/DeepLearning/blob/master/TransformerSeq2Seq/TransformerSorting.ipynb) <br />
+      - [Simple Seq2Seq using Transformers (2023)](https://github.com/prith189/DeepLearning/blob/master/TransformerSeq2Seq/TransformerSorting.ipynb) <br />
         - To get a better understanding of how Transformers work, I experimented with a simple example to sort strings using Transformers. Trained a network using Pytorch
-      - [Patient Clinical Notes(2022)](https://github.com/prith189/DeepLearning/blob/master/Clinical_PatientNotes_NBME/NBME.ipynb) <br />
+      - [Patient Clinical Notes (2022)](https://github.com/prith189/DeepLearning/blob/master/Clinical_PatientNotes_NBME/NBME.ipynb) <br />
         - Finetuned a Huggingface BERT model in two stages (a) Masked Language Modeling task using the unlabeled patient notes and (b) Named Entity Recognition task using the labeled Description -> Symptom dataset
 
 2. [Neural Network from first principles using only Numpy (2018)](https://github.com/prith189/DeepLearningShowcase/tree/master/FirstPrinciples) <br />
