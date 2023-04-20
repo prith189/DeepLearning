@@ -3,8 +3,9 @@ I had done something similar when I was initially learning about RNNs [here](htt
   
 It learns to do the job well within 4 epochs. Here is the output on unseen data after 4 epochs:
 
-
-Input string: sortingtest - Sorted string: eginorssttt <br />
-Input string: abcdef - Sorted string: abcdef <br />
-Input string: fedcba - Sorted string: abcdef <br />
-Input string: prithvi - Sorted string: hiiprtv <br />
+```
+Input string: sortingtest - Sorted string: eginorssttt
+Input string: abcdef - Sorted string: abcdef
+Input string: fedcba - Sorted string: abcdef
+Input string: prithvi - Sorted string: hiiprtv
+```
