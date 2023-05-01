@@ -26,6 +26,8 @@ Sharing some personal ML projects I've worked on <br /> <br />
       - Implemented a Fully connected dense layer architecture using just simple Numpy with functions to backpropagate and update gradients <br />
       - Trained on MNIST dataset using Fully connected layers with reasonable accuracy (~98%) <br /> <br />
 3. Recurrent Neural Networks <br />
+      - [Pricing Optimization using LSTM Encoder-Decoder Architecture (2023)](https://github.com/prith189/DeepLearning/blob/master/Pricing/Pricing_Optimization.ipynb)
+        - Using synthetic data from a Google blog, built a simple demand forecasting model to drive price optimization decisions
       - [Simple Sequence2Sequence Network using RNNs (2018)](https://github.com/prith189/DeepLearning/tree/master/Seq2Seq) 
          - Built using Keras using the Encoder <-> Decoder architecture and trained on a simple task of sorting characters. For eg. 'adgbf' would output the sorted sequence 'abdfg'. This architecture can be easily expanded to do language translation for eg. <br />
       - [CharacterLevelRNN (2018)](https://github.com/prith189/DeepLearningShowcase/tree/master/RecurrentNetwork) 
