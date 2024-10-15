@@ -4,7 +4,7 @@ layout: default
 
 # About
 
-Hello! My name is Prithvi Nuthanakalva, and I'm currently a Machine Learning Engineer at a startup. In my previous career, I helped build and ship GPS Positioning and Navigation software, and have extensive experience in a technical customer facing role. 
+Hello! My name is Prithvi Nuthanakalva, currently working at Qualcomm as an ML Engineer. Prior to this, I worked on some interesting ML projects at a startup. In my previous stint at Qualcomm, I helped build and ship GPS Positioning and Navigation software. 
 
 Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/pnuthanakalva/)
 
